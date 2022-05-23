@@ -77,7 +77,8 @@ const AddProduct = () => {
                     <div class="form-group mb-6">
                         <input type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700  bg-white bg-clip-padding  border border-solid border-gray-300 rounded  transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             placeholder="Name"
-                            name='name' />
+                            name='name'
+                            required />
                     </div>
                     <div class="form-group mb-6">
                         <div class="flex items-center justify-center w-full">
@@ -101,28 +102,34 @@ const AddProduct = () => {
 
                             </label>
 
-                            <input accept="image/*" onChange={(e) => uploader(e)} name='image' type="file" class="hidden" id='image' />
+                            <input accept="image/*" onChange={(e) => uploader(e)} name='image' type="file" class="hidden" id='image'
+                                required />
                         </div>
                     </div>
                     <div class="form-group mb-6">
                         <input type="number" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded  transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             placeholder="Minimum Order Quantity"
-                            name='minimum' />
+                            name='minimum'
+                            required />
                     </div>
                     <div class="form-group mb-6">
                         <input type="number" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded  transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             placeholder="Available Quantity"
-                            name='available' />
+                            name='available'
+                            required />
                     </div>
                     <div class="form-group mb-6">
                         <input type="number" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded  transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             placeholder="Price"
-                            name='price' />
+                            name='price'
+                            required />
                     </div>
                     <div class="form-group mb-6">
                         <textarea
                             class=" form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
                         "  rows="3" name="description"
+                            placeholder='Description'
+                            required
                         ></textarea>
                     </div>
 

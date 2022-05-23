@@ -14,7 +14,7 @@ const Dashboard = () => {
                 </div>
                 <div class="drawer-side ">
                     <label for="my-drawer-2" class="drawer-overlay"></label>
-                    <div class="w-60 h-full  bg-white absolute" id="sidenavSecExample">
+                    <div class="w-60  bg-white absolute" id="sidenavSecExample">
                         <div class="pt-4 pb-2 px-6">
                             <a href="#!">
                                 <div class="flex items-center">
