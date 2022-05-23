@@ -8,6 +8,8 @@ import Footer from './Pages/Shared/Footer';
 import NotFound from './Pages/NotFound/NotFound';
 import Purchase from './Pages/Purchase/Purchase';
 import Blogs from './Pages/Blogs/Blogs';
+import AddProduct from './Pages/Dashboard/AddProduct';
+import Dashboard from './Pages/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -20,6 +22,9 @@ function App() {
           <Route path='/register' element={<Register />}></Route>
           <Route path='/purchase' element={<Purchase />}></Route>
           <Route path='/blogs' element={<Blogs />}></Route>
+          <Route path='/dashboard' element={<Dashboard />}>
+            <Route path='/dashboard/add' element={<AddProduct />}></Route>
+          </Route>
           <Route path='*' element={<NotFound />}></Route>
         </Routes>
       </div>
