@@ -3,7 +3,7 @@ import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear, faGears } from '@fortawesome/free-solid-svg-icons';
+import { faGear, faGears, faMotorcycle } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
 
@@ -36,7 +36,7 @@ const Header = () => {
                             </div>
                             <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                                 <div className="flex-shrink-0 flex items-center text-white text-3xl font-bold">
-                                    <FontAwesomeIcon size="x" icon={faGear} className='mx-2' />
+                                    <FontAwesomeIcon size="x" icon={faMotorcycle} className='mx-2' />
                                     Muto Gear
                                 </div>
                                 <div className="hidden sm:block sm:ml-6">
@@ -80,7 +80,7 @@ const Header = () => {
                                         leaveFrom="transform opacity-100 scale-100"
                                         leaveTo="transform opacity-0 scale-95"
                                     >
-                                        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                        <Menu.Items className="z-10 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                                             <Menu.Item>
                                                 {({ active }) => (
                                                     <a

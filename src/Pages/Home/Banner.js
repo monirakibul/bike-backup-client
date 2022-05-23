@@ -28,36 +28,24 @@ const Banner = () => {
             <div class="carousel-inner relative w-full overflow-hidden">
                 <div class="carousel-item active relative float-left w-full">
                     <img
-                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
+                        src="https://i.ibb.co/sRsVzG2/85be013fe0.jpg"
                         class="block w-full"
                         alt="..."
                     />
-                    <div class="carousel-caption hidden md:block absolute text-center">
-                        <h5 class="text-xl">First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
                 </div>
                 <div class="carousel-item relative float-left w-full">
                     <img
-                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
+                        src="https://i.ibb.co/L00FwcL/Banner-2-Copy-1.jpg"
                         class="block w-full"
                         alt="..."
                     />
-                    <div class="carousel-caption hidden md:block absolute text-center">
-                        <h5 class="text-xl">Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
-                    </div>
                 </div>
                 <div class="carousel-item relative float-left w-full">
                     <img
-                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+                        src="https://i.ibb.co/fxd6mb0/index-banner-5-1.jpg"
                         class="block w-full"
                         alt="..."
                     />
-                    <div class="carousel-caption hidden md:block absolute text-center">
-                        <h5 class="text-xl">Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
-                    </div>
                 </div>
             </div>
             <button

@@ -1,13 +1,14 @@
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}", './node_modules/tw-elements/dist/js/**/*.js'
   ],
   theme: {
     extend: {
       colors: {
-        primary: 'green'
+        primary: '#2563eb'
       }
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require('tw-elements/dist/plugin')],
+
 }
