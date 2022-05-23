@@ -4,12 +4,12 @@ import React from 'react';
 
 const Summary = () => {
     return (
-        <section class="m-10 text-gray-800">
+        <section class="m-5 text-gray-800">
             <h1 className="text-2xl lg:text-3xl text-primary font-semibold text-center py-5">
-                Customer's Reviews
+                Summary
             </h1>
             <div class="grid md:grid-cols-4 gap-4">
-                <div class="mb-6 md:mb-0">
+                <div class="">
                     <div class="block shadow rounded-xl">
                         <div class="flex justify-start items-center p-6 bg-white rounded-t-lg">
                             <div class="bg-blue-600 text-white rounded-md flex justify-center items-center w-12 h-12">
@@ -24,7 +24,7 @@ const Summary = () => {
                         </div>
                     </div>
                 </div>
-                <div class="mb-6 md:mb-0">
+                <div class="">
                     <div class="block shadow rounded-xl">
                         <div class="flex justify-start items-center p-6 bg-white rounded-t-lg">
                             <div class="bg-blue-600 text-white rounded-md flex justify-center items-center w-12 h-12">
@@ -39,7 +39,7 @@ const Summary = () => {
                         </div>
                     </div>
                 </div>
-                <div class="mb-6 md:mb-0">
+                <div class="">
                     <div class="block shadow rounded-xl">
                         <div class="flex justify-start items-center p-6 bg-white rounded-t-lg">
                             <div class="bg-blue-600 text-white rounded-md flex justify-center items-center w-12 h-12">
@@ -54,7 +54,7 @@ const Summary = () => {
                         </div>
                     </div>
                 </div>
-                <div class="mb-0">
+                <div class="">
                     <div class="block shadow rounded-xl">
                         <div class="flex justify-start items-center p-6 bg-white rounded-t-lg">
                             <div class="bg-blue-600 text-white rounded-md flex justify-center items-center w-12 h-12">

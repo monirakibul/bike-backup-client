@@ -37,7 +37,7 @@ const Header = () => {
                             <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                                 <div className="flex-shrink-0 flex items-center text-white text-3xl font-bold">
                                     <FontAwesomeIcon size="x" icon={faMotorcycle} className='mx-2' />
-                                    Muto Gear
+                                    Bike Backup
                                 </div>
                                 <div className="hidden sm:block sm:ml-6">
                                     <div className="flex space-x-4">
