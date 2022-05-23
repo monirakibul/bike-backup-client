@@ -20,9 +20,9 @@ const AddProduct = () => {
             reader.readAsDataURL(imageFile);
         }
 
-        return { result, uploader };
+        return { result, uploader, setResult };
     }
-    const { result, uploader } = useDisplayImage();
+    const { result, uploader, setResult } = useDisplayImage();
 
     const handleAddProduct = async e => {
         e.preventDefault()
@@ -58,7 +58,8 @@ const AddProduct = () => {
                         .then(res => res.json())
                         .then(inserted => {
                             toast.success('Product Added');
-                            e.target.reset()
+                            setResult('');
+                            e.target.reset();
                         })
                 } else {
                     toast.error('Select a image file')
@@ -121,7 +122,7 @@ const AddProduct = () => {
                     <div class="form-group mb-6">
                         <textarea
                             class=" form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-                        "  rows="3" placeholder="Description"
+                        "  rows="3" name="description"
                         ></textarea>
                     </div>
 

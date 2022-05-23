@@ -10,6 +10,8 @@ import Purchase from './Pages/Purchase/Purchase';
 import Blogs from './Pages/Blogs/Blogs';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import Dashboard from './Pages/Dashboard/Dashboard';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
         </Routes>
       </div>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }
