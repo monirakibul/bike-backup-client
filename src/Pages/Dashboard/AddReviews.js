@@ -1,17 +1,23 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 const AddReviews = () => {
 
+    const [user] = useAuthState(auth)
+
     const handleAddReview = e => {
         e.preventDefault()
-        const name = e.target.star.value;
+        const stars = e.target.stars.value;
         const review = {
-            name: name,
+            name: user.displayName,
+            img: user.photoURL,
+            stars: stars,
             description: e.target.description.value
         }
 
-        if (name > 5 || name < 1) {
+        if (stars > 5 || stars < 1) {
             toast.error('Star must be a possitive number between 1 to 5')
         }
         else {
@@ -41,7 +47,7 @@ const AddReviews = () => {
                     <div class="form-group mb-6">
                         <input type="number" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded  transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             placeholder="Star"
-                            name='star'
+                            name='stars'
                             required />
                     </div>
                     <div class="form-group mb-6">
