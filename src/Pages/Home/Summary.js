@@ -5,6 +5,9 @@ import React from 'react';
 const Summary = () => {
     return (
         <section class="m-10 text-gray-800">
+            <h1 className="text-2xl lg:text-3xl text-primary font-semibold text-center py-5">
+                Customer's Reviews
+            </h1>
             <div class="grid md:grid-cols-4 gap-4">
                 <div class="mb-6 md:mb-0">
                     <div class="block shadow rounded-xl">

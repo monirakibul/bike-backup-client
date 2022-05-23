@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Newslatter = () => {
+const Newsletter = () => {
     return (
         <div class="bg-gray-800 my-10 flex justify-center">
             <div class="py-12 px-4 sm:px-6 lg:py-16 lg:px-8 mx-auto">
@@ -22,4 +22,4 @@ const Newslatter = () => {
     );
 };
 
-export default Newslatter;
+export default Newsletter;

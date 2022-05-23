@@ -1,7 +1,8 @@
 import React from 'react';
 import Banner from './Banner';
 import Features from './Features';
-import Newslatter from './Newslatter';
+import Newsletter from './Newsletter';
+import Reviews from './Reviews';
 import Summary from './Summary';
 
 const Home = () => {
@@ -9,7 +10,8 @@ const Home = () => {
         <div>
             <Banner />
             <Summary />
-            <Newslatter />
+            <Newsletter />
+            <Reviews />
             <Features />
         </div>
     );
