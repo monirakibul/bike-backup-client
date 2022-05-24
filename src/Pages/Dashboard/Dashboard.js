@@ -37,7 +37,7 @@ const Dashboard = () => {
                             <a href="#!">
                                 <div class="flex items-center">
                                     <div class="shrink-0">
-                                        <img src={user.photoURL} class="rounded-full w-10" alt="Avatar" />
+                                        <img src={user.photoURL ?? 'https://api.lorem.space/image/face?hash=88560'} class="rounded-full w-10 h-10" alt="Avatar" />
                                     </div>
                                     <div class="grow ml-3">
                                         <p class="text-sm font-semibold text-blue-600">{user.displayName}</p>

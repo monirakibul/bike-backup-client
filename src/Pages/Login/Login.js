@@ -36,9 +36,11 @@ const Login = () => {
         navigate(from, { replace: true });
     }
 
-    const onSubmit = data => {
-        signInWithEmailAndPassword(data.email, data.password)
-    };
+    const handleLogin = async e => {
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        await signInWithEmailAndPassword(email, password)
+    }
     return (
         <div class="flex justify-center items-center min-h-screen bg-gray-100">
             <ChangePageTitle pageTitle="Login - Bike Backup" />
@@ -48,7 +50,7 @@ const Login = () => {
                     <p class="text-gray-500">Log in to access your account</p>
                 </div>
                 <div class="m-6">
-                    <form class="mb-4" onSubmit={handleSubmit(onSubmit)}>
+                    <form class="mb-4" onSubmit={handleLogin}>
                         <div class="mb-6">
                             <label for="email" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Email Address</label>
                             <input type="email" placeholder="Your email address"
@@ -92,7 +94,7 @@ const Login = () => {
                         </div>
                         {signInError}
                         <div class="mb-6">
-                            <button type="button" class="w-full px-3 py-4 text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none duration-100 ease-in-out">Sign in</button>
+                            <button type="submit" class="w-full px-3 py-4 text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none duration-100 ease-in-out">Sign in</button>
                         </div>
                         <p class="text-sm text-center text-gray-400">
                             Don&#x27;t have an account yet?

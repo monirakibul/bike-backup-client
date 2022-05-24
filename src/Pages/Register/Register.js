@@ -10,7 +10,6 @@ import Loading from '../Shared/Loading';
 const Register = () => {
     const navigate = useNavigate();
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-    const { register, formState: { errors }, handleSubmit } = useForm();
     const [
         createUserWithEmailAndPassword,
         user,
@@ -21,7 +20,7 @@ const Register = () => {
 
     const [token] = useToken(user || gUser);
     if (token) {
-        navigate('/appointment')
+        navigate('/')
     }
 
     if (loading || gLoading || updating) {
@@ -32,9 +31,12 @@ const Register = () => {
     if (error || gError) {
         signUpError = <p className='text-red-500 mb-3'><small>{error?.message || gError?.message}</small></p>
     }
-    const onSubmit = async data => {
-        await createUserWithEmailAndPassword(data.email, data.password)
-        await updateProfile({ displayName: data.name })
+    const handleSubmit = async e => {
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        await createUserWithEmailAndPassword(email, password)
+        await updateProfile({ displayName: name })
 
     };
     return (
@@ -45,7 +47,7 @@ const Register = () => {
                     <h1 class="text-3xl font-semibold text-gray-700">Sign Up</h1>
                 </div>
                 <div class="m-6">
-                    <form class="mb-4">
+                    <form class="mb-4" onSubmit={handleSubmit}>
                         <div class="mb-6">
                             <label for="name" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Full Name</label>
                             <input type="text" name="name" id="name" placeholder="Your Full Name" class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" required />
@@ -63,7 +65,7 @@ const Register = () => {
                         </div>
                         {signUpError}
                         <div class="mb-6">
-                            <button type="button" class="w-full px-3 py-4 text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none duration-100 ease-in-out">Sign Up</button>
+                            <button type="submit" class="w-full px-3 py-4 text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none duration-100 ease-in-out">Sign Up</button>
                         </div>
                         <p class="text-sm text-center text-gray-400">
                             Already have an account yet?

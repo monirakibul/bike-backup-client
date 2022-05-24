@@ -62,6 +62,39 @@ const ManageOrders = () => {
         })
     }
 
+    const handleShipped = id => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/order/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
+                    .then(res => {
+                        if (res.status === 403) {
+                            toast.error('Failed')
+                        }
+                        return res.json()
+                    })
+                    .then(data => {
+                        if (data.modifiedCount > 0) {
+                            toast.success(" Success")
+                            refetch()
+                        }
+                    })
+            }
+        })
+    }
+
     return (
         <div class="overflow-x-auto"><h2 className="text-2xl lg:text-3xl text-primary font-semibold text-center py-5">
             Manage Orders</h2>
@@ -70,7 +103,9 @@ const ManageOrders = () => {
                     <tr>
                         <th></th>
                         <th>Image</th>
-                        <th>Name</th>
+                        <th>Product Name</th>
+                        <th>User</th>
+                        <th>Email</th>
                         <th>Amount</th>
                         <th>Action</th>
                         <th>Status</th>
@@ -83,14 +118,11 @@ const ManageOrders = () => {
                                 <th>1</th>
                                 <td><img src={order.img} alt="" className='w-16' /></td>
                                 <td>{order.productName}</td>
+                                <td>{order.name}</td>
+                                <td>{order.email}</td>
                                 <td>${order.amount}</td>
-                                <td>{order.paid ?
-                                    <button class="btn btn-sm disabled">Paid</button>
-                                    :
-                                    <><button onClick={() => navigate(`/payment/${order._id}`)} class="btn btn-sm m-2">Pay</button>
-                                        <button onClick={() => handleDelete(order._id)} class="btn btn-sm">Delete</button></>
-                                }</td>
-                                <td>{order.paid ? 'Completed' : 'Pending'}</td>
+                                <td><button onClick={() => handleDelete(order._id)} class="btn btn-sm">Delete</button></td>
+                                <td>{order.paid ? order.status ? 'Shipped' : <button onClick={() => handleShipped(order._id)} class="btn btn-sm m-2">Mark as Shipped</button> : 'pending'}</td>
                             </tr>
                         )
                     }

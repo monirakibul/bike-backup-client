@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDashboard, faMotorcycle, faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faDashboard, faMotorcycle, faSignOut, faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut } from 'firebase/auth';
@@ -81,21 +81,43 @@ const Header = () => {
                                     >
                                         <Menu.Items className="z-10  origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
 
-                                            <Menu.Item>
-                                                <Link to='/dashboard'
-                                                    className='hover:bg-gray-300 block px-4 py-2 text-sm text-gray-700'>
-                                                    <FontAwesomeIcon className='pr-3' icon={faDashboard} />
-                                                    Dashboard
-                                                </Link>
-                                            </Menu.Item>
-                                            <hr />
-                                            <Menu.Item>
-                                                <div onClick={() => signOut(auth)}
-                                                    className='hover:bg-gray-300 cursor-pointer block px-4 py-2 text-sm text-gray-700'>
-                                                    <FontAwesomeIcon className='pr-3' icon={faSignOut} />
-                                                    Log Out
-                                                </div>
-                                            </Menu.Item>
+                                            {
+                                                user ? <>
+                                                    <Menu.Item>
+                                                        <Link to='/dashboard'
+                                                            className='hover:bg-gray-300 block px-4 py-2 text-sm text-gray-700'>
+                                                            <FontAwesomeIcon className='pr-3' icon={faDashboard} />
+                                                            Dashboard
+                                                        </Link>
+                                                    </Menu.Item>
+                                                    <hr />
+                                                    <Menu.Item>
+                                                        <div onClick={() => signOut(auth)}
+                                                            className='hover:bg-gray-300 cursor-pointer block px-4 py-2 text-sm text-gray-700'>
+                                                            <FontAwesomeIcon className='pr-3' icon={faSignOut} />
+                                                            Log Out
+                                                        </div>
+                                                    </Menu.Item>
+                                                </>
+                                                    :
+                                                    <>
+                                                        <Menu.Item>
+                                                            <Link to='/login'
+                                                                className='hover:bg-gray-300 block px-4 py-2 text-sm text-gray-700'>
+                                                                <FontAwesomeIcon className='pr-3' icon={faUser} />
+                                                                Login
+                                                            </Link>
+                                                        </Menu.Item>
+                                                        <hr />
+                                                        <Menu.Item>
+                                                            <Link to='/register'
+                                                                className='hover:bg-gray-300 block px-4 py-2 text-sm text-gray-700'>
+                                                                <FontAwesomeIcon className='pr-3' icon={faUserPlus} />
+                                                                SignUp
+                                                            </Link>
+                                                        </Menu.Item>
+                                                    </>
+                                            }
                                         </Menu.Items>
                                     </Transition>
                                 </Menu>
