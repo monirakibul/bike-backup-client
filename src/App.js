@@ -13,6 +13,7 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddReviews from './Pages/Dashboard/AddReviews';
+import MakeAdmin from './Pages/Dashboard/MakeAdmin';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/dashboard' element={<Dashboard />}>
             <Route path='/dashboard/add' element={<AddProduct />}></Route>
             <Route path='/dashboard/add-review' element={<AddReviews />}></Route>
+            <Route path='/dashboard/make-admin' element={<MakeAdmin />}></Route>
 
 
           </Route>

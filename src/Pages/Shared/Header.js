@@ -1,11 +1,16 @@
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear, faGears, faMotorcycle } from '@fortawesome/free-solid-svg-icons';
+import { faMotorcycle } from '@fortawesome/free-solid-svg-icons';
+import auth from '../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Header = () => {
+
+    const [user] = useAuthState(auth);
+
 
     const navigation = [
         { name: 'Dashboard', href: '#', current: true },

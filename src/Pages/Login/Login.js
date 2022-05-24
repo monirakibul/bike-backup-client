@@ -5,6 +5,7 @@ import useToken from '../../hooks/useToken';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading';
 import { useForm } from 'react-hook-form';
+import ChangePageTitle from '../../hooks/ChangePageTitle';
 
 const Login = () => {
 
@@ -40,6 +41,7 @@ const Login = () => {
     };
     return (
         <div class="flex justify-center items-center min-h-screen bg-gray-100">
+            <ChangePageTitle pageTitle="Login - Bike Backup" />
             <div class="container rounded  my-auto max-w-md border-2 border-gray-200 p-3 bg-white">
                 <div class="text-center my-6">
                     <h1 class="text-3xl font-semibold text-gray-700">Log in</h1>

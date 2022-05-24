@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import ChangePageTitle from '../../hooks/ChangePageTitle';
 
 const AddReviews = () => {
 
@@ -39,6 +40,7 @@ const AddReviews = () => {
     }
     return (
         <div className='w-11/12 lg:w-6/12  '>
+            <ChangePageTitle pageTitle="Add Review - Dashboard" />
             <h1 className="text-2xl lg:text-3xl text-primary font-semibold text-center py-5">
                 Add Review
             </h1>

@@ -3,6 +3,7 @@ import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfil
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import ChangePageTitle from '../../hooks/ChangePageTitle';
 import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading';
 
@@ -38,6 +39,7 @@ const Register = () => {
     };
     return (
         <div class="flex justify-center items-center min-h-screen bg-gray-100">
+            <ChangePageTitle pageTitle="Sign up - Bike Backup" />
             <div class="container rounded  my-auto max-w-md border-2 border-gray-200 p-3 bg-white">
                 <div class="text-center my-6">
                     <h1 class="text-3xl font-semibold text-gray-700">Sign Up</h1>
