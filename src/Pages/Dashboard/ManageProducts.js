@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import { toast } from 'react-toastify';
 import ChangePageTitle from '../../hooks/ChangePageTitle';
 import Loading from '../Shared/Loading';
 

@@ -14,6 +14,12 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddReviews from './Pages/Dashboard/AddReviews';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin';
+import RequireAuth from './Pages/Login/RequireAuth';
+import RequireAdmin from './Pages/Login/RequireAdmin';
+import MyOrders from './Pages/Dashboard/MyOrders';
+import ManageProducts from './Pages/Dashboard/ManageProducts';
+import ManageOrders from './Pages/Dashboard/ManageOrders';
+import Payment from './Pages/Purchase/Payment';
 
 function App() {
   return (
@@ -24,13 +30,30 @@ function App() {
           <Route path='/' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/register' element={<Register />}></Route>
-          <Route path='/purchase' element={<Purchase />}></Route>
+          <Route path='/purchase/:id' element={<RequireAuth>
+            <Purchase />
+          </RequireAuth>}></Route>
+          <Route path='/payment/:id' element={<RequireAuth>
+            <Payment />
+          </RequireAuth>}></Route>
           <Route path='/blogs' element={<Blogs />}></Route>
-          <Route path='/dashboard' element={<Dashboard />}>
-            <Route path='/dashboard/add' element={<AddProduct />}></Route>
+          <Route path='/dashboard' element={
+            <RequireAuth><Dashboard /></RequireAuth>
+          }>
+            <Route path='/dashboard/add' element={<RequireAdmin>
+              <AddProduct />
+            </RequireAdmin>}></Route>
             <Route path='/dashboard/add-review' element={<AddReviews />}></Route>
-            <Route path='/dashboard/make-admin' element={<MakeAdmin />}></Route>
-
+            <Route path='/dashboard/my-orders' element={<MyOrders />}></Route>
+            <Route path='/dashboard/make-admin' element={<RequireAdmin>
+              <MakeAdmin />
+            </RequireAdmin>}></Route>
+            <Route path='/dashboard/manage-products' element={<RequireAdmin>
+              <ManageProducts />
+            </RequireAdmin>}></Route>
+            <Route path='/dashboard/manage-orders' element={<RequireAdmin>
+              <ManageOrders />
+            </RequireAdmin>}></Route>
 
           </Route>
           <Route path='*' element={<NotFound />}></Route>

@@ -9,7 +9,7 @@ const SingleReview = ({ review }) => {
             <div className="flex justify-start">
                 <div class="avatar">
                     <div class="w-10 h-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                        <img src={img} />
+                        <img src={img ?? 'https://api.lorem.space/image/face?hash=88560'} />
                     </div>
                 </div>
                 <h2 className="ml-5 text-xl">{name}</h2>

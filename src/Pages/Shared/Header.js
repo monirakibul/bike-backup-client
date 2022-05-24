@@ -1,27 +1,25 @@
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMotorcycle } from '@fortawesome/free-solid-svg-icons';
+import { faDashboard, faMotorcycle, faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
+import CustomLink from '../../hooks/CustomLink';
 
 const Header = () => {
 
     const [user] = useAuthState(auth);
-
+    const navigate = useNavigate();
 
     const navigation = [
-        { name: 'Dashboard', href: '#', current: true },
-        { name: 'Team', href: '#', current: false },
-        { name: 'Projects', href: '#', current: false },
-        { name: 'Calendar', href: '#', current: false },
+        { name: 'Home', to: '/#', current: true },
+        { name: 'Portfolio', to: '/portfolio', current: false },
+        { name: 'Blogs', to: '/blogs', current: false },
     ]
 
-    function classNames(...classes) {
-        return classes.filter(Boolean).join(' ')
-    }
     return (
         <Disclosure as="nav" className="bg-gray-800">
             {({ open }) => (
@@ -40,24 +38,20 @@ const Header = () => {
                                 </Disclosure.Button>
                             </div>
                             <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                                <div className="flex-shrink-0 flex items-center text-white text-3xl font-bold">
+                                <div onClick={() => navigate('/')} className="cursor-pointer flex-shrink-0 flex items-center text-white text-3xl font-bold">
                                     <FontAwesomeIcon size="x" icon={faMotorcycle} className='mx-2' />
                                     Bike Backup
                                 </div>
                                 <div className="hidden sm:block sm:ml-6">
                                     <div className="flex space-x-4">
                                         {navigation.map((item) => (
-                                            <a
+                                            <CustomLink
                                                 key={item.name}
-                                                href={item.href}
-                                                className={classNames(
-                                                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                    'px-3 py-2 rounded-md text-sm font-medium'
-                                                )}
+                                                to={item.to}
                                                 aria-current={item.current ? 'page' : undefined}
                                             >
                                                 {item.name}
-                                            </a>
+                                            </CustomLink>
                                         ))}
                                     </div>
                                 </div>
@@ -71,8 +65,8 @@ const Header = () => {
                                             <span className="sr-only">Open user menu</span>
                                             <img
                                                 className="h-8 w-8 rounded-full"
-                                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                                alt=""
+                                                src={user?.photoURL ?? 'https://api.lorem.space/image/face?hash=88560'}
+                                                alt={user?.displayName}
                                             />
                                         </Menu.Button>
                                     </div>
@@ -85,36 +79,22 @@ const Header = () => {
                                         leaveFrom="transform opacity-100 scale-100"
                                         leaveTo="transform opacity-0 scale-95"
                                     >
-                                        <Menu.Items className="z-10 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                        <Menu.Items className="z-10  origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+
                                             <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                    >
-                                                        Your Profile
-                                                    </a>
-                                                )}
+                                                <Link to='/dashboard'
+                                                    className='hover:bg-gray-300 block px-4 py-2 text-sm text-gray-700'>
+                                                    <FontAwesomeIcon className='pr-3' icon={faDashboard} />
+                                                    Dashboard
+                                                </Link>
                                             </Menu.Item>
+                                            <hr />
                                             <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                    >
-                                                        Settings
-                                                    </a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                    >
-                                                        Sign out
-                                                    </a>
-                                                )}
+                                                <div onClick={() => signOut(auth)}
+                                                    className='hover:bg-gray-300 cursor-pointer block px-4 py-2 text-sm text-gray-700'>
+                                                    <FontAwesomeIcon className='pr-3' icon={faSignOut} />
+                                                    Log Out
+                                                </div>
                                             </Menu.Item>
                                         </Menu.Items>
                                     </Transition>
@@ -126,18 +106,12 @@ const Header = () => {
                     <Disclosure.Panel className="sm:hidden">
                         <div className="px-2 pt-2 pb-3 space-y-1">
                             {navigation.map((item) => (
-                                <Disclosure.Button
+                                <CustomLink
                                     key={item.name}
-                                    as="a"
-                                    href={item.href}
-                                    className={classNames(
-                                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                        'block px-3 py-2 rounded-md text-base font-medium'
-                                    )}
-                                    aria-current={item.current ? 'page' : undefined}
+                                    to={item.to}
                                 >
                                     {item.name}
-                                </Disclosure.Button>
+                                </CustomLink>
                             ))}
                         </div>
                     </Disclosure.Panel>
