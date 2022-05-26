@@ -64,7 +64,7 @@ const Header = () => {
                                         <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                                             <span className="sr-only">Open user menu</span>
                                             <img
-                                                className="h-8 w-8 rounded-full"
+                                                className="h-8 w-8 rounded-full ring ring-gray-400"
                                                 src={user?.photoURL ?? 'https://api.lorem.space/image/face?hash=88560'}
                                                 alt={user?.displayName}
                                             />
@@ -84,7 +84,7 @@ const Header = () => {
                                             {
                                                 user ? <>
                                                     <Menu.Item>
-                                                        <Link to='/dashboard'
+                                                        <Link to='/dashboard/profile'
                                                             className='hover:bg-gray-300 block px-4 py-2 text-sm text-gray-700'>
                                                             <FontAwesomeIcon className='pr-3' icon={faDashboard} />
                                                             Dashboard

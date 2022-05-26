@@ -5,7 +5,7 @@ const Products = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://bike-backup.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
@@ -18,7 +18,7 @@ const Products = () => {
                 {
                     products.slice(0, 6).map(product => <SingleProduct
                         key={product._id}
-                        product={product}></SingleProduct>)
+                        product={product}></SingleProduct>).reverse()
                 }
             </div>
         </div>

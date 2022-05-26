@@ -11,7 +11,7 @@ import { signOut } from 'firebase/auth';
 const ManageProducts = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
-    const { data: products, isLoading, refetch } = useQuery('products', () => fetch(`http://localhost:5000/products`, {
+    const { data: products, isLoading, refetch } = useQuery('products', () => fetch(`https://bike-backup.herokuapp.com/products`, {
         method: "GET",
         headers: {
             authorization: `Bearer ${localStorage.getItem('token')}`
@@ -40,7 +40,7 @@ const ManageProducts = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/product/${id}`, {
+                fetch(`https://bike-backup.herokuapp.com/product/${id}`, {
                     method: 'DELETE',
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('token')}`
@@ -63,9 +63,9 @@ const ManageProducts = () => {
     }
 
     return (
-        <div class="overflow-x-auto"><h2 className="text-2xl lg:text-3xl text-primary font-semibold text-center py-5">
+        <div className="overflow-x-auto"><h2 className="text-2xl lg:text-3xl text-primary font-semibold text-center py-5">
             Manage Products</h2>
-            <table class="table w-full">
+            <table className="table w-full">
                 <thead>
                     <tr>
                         <th></th>
@@ -81,13 +81,13 @@ const ManageProducts = () => {
                     {
                         products.map((product, index) =>
                             <tr key={product._id}>
-                                <th>{index}</th>
+                                <th>{index + 1}</th>
                                 <td><img src={product.img} alt="" className='w-16' /></td>
                                 <td>{product.name}</td>
                                 <td>${product.price}</td>
                                 <td>{product.available}</td>
                                 <td>{product.minimum}</td>
-                                <td><button onClick={() => handleDelete(product._id)} class="btn btn-sm">Delete</button></td>
+                                <td><button onClick={() => handleDelete(product._id)} className="btn btn-sm btn-error">Delete</button></td>
                             </tr>
                         )
                     }

@@ -20,16 +20,23 @@ import MyOrders from './Pages/Dashboard/MyOrders';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
 import ManageOrders from './Pages/Dashboard/ManageOrders';
 import Payment from './Pages/Purchase/Payment';
+import Profile from './Pages/Dashboard/Profile';
+import Portfolio from './Pages/Portfolio/Portfolio';
+import Forgot from './Pages/Login/Forgot';
+import ScrollToTop from './hooks/ScrollToTop';
 
 function App() {
   return (
     <div className='flex flex-col'>
+      <ScrollToTop />
       <Header></Header>
       <div className="flex-grow">
         <Routes >
           <Route path='/' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/register' element={<Register />}></Route>
+          <Route path='/reset' element={<Forgot />}></Route>
+          <Route path='/portfolio' element={<Portfolio />}></Route>
           <Route path='/purchase/:id' element={<RequireAuth>
             <Purchase />
           </RequireAuth>}></Route>
@@ -43,6 +50,7 @@ function App() {
             <Route path='/dashboard/add' element={<RequireAdmin>
               <AddProduct />
             </RequireAdmin>}></Route>
+            <Route path='/dashboard/profile' element={<Profile />}></Route>
             <Route path='/dashboard/add-review' element={<AddReviews />}></Route>
             <Route path='/dashboard/my-orders' element={<MyOrders />}></Route>
             <Route path='/dashboard/make-admin' element={<RequireAdmin>

@@ -11,7 +11,7 @@ import Loading from '../Shared/Loading';
 const MyOrders = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/order?email=${user.email}`, {
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`https://bike-backup.herokuapp.com/order?email=${user.email}`, {
         method: "GET",
         headers: {
             authorization: `Bearer ${localStorage.getItem('token')}`
@@ -40,7 +40,7 @@ const MyOrders = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/order/${id}`, {
+                fetch(`https://bike-backup.herokuapp.com/order/${id}`, {
                     method: 'DELETE',
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('token')}`
@@ -63,15 +63,16 @@ const MyOrders = () => {
     }
 
     return (
-        <div class="overflow-x-auto"><h2 className="text-2xl lg:text-3xl text-primary font-semibold text-center py-5">
+        <div className="overflow-x-auto"><h2 className="text-2xl lg:text-3xl text-primary font-semibold text-center py-5">
             My Orders</h2>
-            <table class="table w-full">
+            <table className="table w-full">
                 <thead>
                     <tr>
                         <th></th>
                         <th>Image</th>
                         <th>Name</th>
                         <th>Amount</th>
+                        <th>Quantity</th>
                         <th>Action</th>
                         <th>Status</th>
                     </tr>
@@ -84,13 +85,14 @@ const MyOrders = () => {
                                 <td><img src={order.img} alt="" className='w-16' /></td>
                                 <td>{order.productName}</td>
                                 <td>${order.amount}</td>
+                                <td>{order.quantity}</td>
                                 <td>{order.paid ?
-                                    <button class="btn btn-sm disabled">Paid</button>
+                                    <button className="btn btn-sm" disabled={order.paid}>Paid</button>
                                     :
-                                    <><button onClick={() => navigate(`/payment/${order._id}`)} class="btn btn-sm m-2">Pay</button>
-                                        <button onClick={() => handleDelete(order._id)} class="btn btn-sm">Delete</button></>
+                                    <><button onClick={() => navigate(`/payment/${order._id}`)} className="btn btn-sm m-2">Pay</button>
+                                        <button onClick={() => handleDelete(order._id)} className="btn btn-sm">Delete</button></>
                                 }</td>
-                                <td>{order.paid ? 'Completed' : 'Pending'}</td>
+                                <td>{order.status ? 'Shipped' : 'Pending'}</td>
                             </tr>
                         )
                     }

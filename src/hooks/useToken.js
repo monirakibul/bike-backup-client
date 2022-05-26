@@ -6,10 +6,11 @@ const useToken = user => {
     useEffect(() => {
 
         const email = user?.user?.email;
-        const currentUser = { email: email };
+        const name = user?.user?.displayName;
+        const currentUser = { email: email, name: name };
 
         if (email) {
-            fetch(`http://localhost:5000/user/${email}`, {
+            fetch(`https://bike-backup.herokuapp.com/user/${email}`, {
                 method: "PUT",
                 headers: {
                     'content-type': 'application/json'
