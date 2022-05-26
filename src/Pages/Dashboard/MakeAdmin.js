@@ -56,7 +56,7 @@ const MakeAdmin = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/user/admin/${email}`, {
+                fetch(`https://bike-backup.herokuapp.com/user/admin/${email}`, {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json',
