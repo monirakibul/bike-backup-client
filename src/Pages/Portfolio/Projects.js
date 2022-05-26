@@ -28,15 +28,15 @@ const Projects = () => {
                         title='BIKE BACKUP - A professional bike parts manufacturer.'
                         backgroundImg="https://i.ibb.co/hydsrzb/Bike-Backup.png"
                         live='https://bikebackup.web.app/'
-                        server='https://quickstore-fa064.web.app/'
-                        client='https://quickstore-fa064.web.app/'
+                        server='https://github.com/monirakibul/bike-backup-server'
+                        client='https://github.com/monirakibul/bike-backup-client'
                     />
                     <ProjectItem
                         title='Laptop Mela - ProductAnalysis Website'
                         backgroundImg="https://i.ibb.co/x2nqjF6/image.png"
                         live='https://jocular-liger-645f7c.netlify.app/'
                         server=''
-                        client='https://quickstore-fa064.web.app/'
+                        client='https://github.com/monirakibul/laptop-mela'
                     />
                 </div>
             </div>
